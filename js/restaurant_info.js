@@ -19,7 +19,7 @@ initMap = () => {
       self.newMap = L.map('map', {
         center: [restaurant.latlng.lat, restaurant.latlng.lng],
         zoom: 16,
-        scrollWheelZoom: true
+        scrollWheelZoom: false
       });
       L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.jpg70?access_token={mapboxToken}', {
         mapboxToken: 'pk.eyJ1Ijoicmp1bWF3YW4iLCJhIjoiY2ppa2QwY2Z1MXFiMjNxb2RydXlnZTluaiJ9.v3afFUOmD3rmeG2MtT8QbQ',
@@ -88,7 +88,16 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
 
   const image = document.getElementById('restaurant-img');
   image.className = 'restaurant-img'
-  image.src = DBHelper.imageUrlForRestaurant(restaurant);
+  const imgscr = DBHelper.imageUrlForRestaurant(restaurant, 'img');
+  const imgparts = imgscr.split('.')
+  const img1x = imgparts[0] + '_1x' + '.' + imgparts[1];
+  const img2x = imgparts[0] + '_2x' + '.' + imgparts[1];
+  image.src = img1x;
+  image.srcset = `${img1x} 300w, ${img2x} 600w`;
+  image.alt = restaurant.name + ' restaurant photo';
+
+
+
 
   const cuisine = document.getElementById('restaurant-cuisine');
   cuisine.innerHTML = restaurant.cuisine_type;

@@ -38,23 +38,39 @@
   <!-- Beginning main -->
   <main id="maincontent" role="main">
     <!-- Beginning map -->
-    <section id="map-container">
-      <div id="map" role="application" aria-hidden="true" aria-describedby="map-description"></div>>
 
-      <div hidden id="map-description">This is a map that display the restaurant location</div>
-    </section>
     <!-- End map -->
     <!-- Beginning restaurant -->
-    <section id="restaurant-container">
+    <section id="restaurant-container" role="article" tabindex="0" aria-label="restaurant details">
       <h1 id="restaurant-name"></h1>
-      <img id="restaurant-img">
+      <img id="restaurant-img" alt="image of restaurant">
       <p id="restaurant-cuisine"></p>
-      <p id="restaurant-address"></p>
-      <table id="restaurant-hours"></table>
+    </section>
+
+    <section id="restaurant-address-and-hours">
+      <label id="restaurant-address-label" class="restaurant-address-label">Address</label>
+      <p id="restaurant-address" aria-labelledby="aria-address-lable"></p>
+
+
+
+      <section id="map-container">
+        <div id="map" role="application" aria-hidden="true" aria-describedby="map-description"></div>
+        <div hidden id="map-description">This is a map that display the restaurant location</div>
+      </section>
+      <!-- <section id="map-container">
+        <div id="map" role="application" aria-hidden="true" aria-describedby="map-description"></div>
+        <div hidden id="map-description">This is a map that display the restaurant location</div>
+      </section> -->
+
+      <div class="restaurant-hours-flex">
+        <label id="restaurant-hours-label" class="restaurant-info-label">Hours of Operation</label>
+        <table id="restaurant-hours" aria-labelledby="restaurant-hours-label"></table>
+
+      </div>
     </section>
     <!-- end restaurant -->
     <!-- Beginning reviews -->
-    <section id="reviews-container">
+    <section id="reviews-container" role="article">
       <ul id="reviews-list"></ul>
     </section>
     <!-- End reviews -->
